@@ -3,12 +3,29 @@
 #include<algorithm>
 using namespace std;
 
-    vector<int> sortedSquares(vector<int>& nums) {
-        vector<int>ans;
-        for(int i=0; i<nums.size(); i++){
-            ans.push_back(nums[i]*nums[i]);    
+    vector<int> sortedSquares(vector<int>& a) {
+        // vector<int>ans;
+        // for(int i=0; i<a.size(); i++){
+        //     ans.push_back(a[i]*a[i]);    
+        // }
+        // sort(ans.begin(), ans.end());
+        // return ans;
+
+        // using 2 pointers
+        int n = a.size();
+        int i=0, j=n-1;
+        vector<int>ans(n);
+        int k = n-1;
+        while(i<=j){
+            if(abs(a[i]*a[i]) < abs(a[j]*a[j])){
+                ans[k--] = abs(a[j]*a[j]);
+                j--;
+            }
+            else{
+                ans[k--] = abs(a[i]*a[i]);
+                i++;
+            }
         }
-        sort(ans.begin(), ans.end());
         return ans;
     }
 
